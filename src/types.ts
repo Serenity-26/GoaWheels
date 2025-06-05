@@ -34,4 +34,8 @@ export interface LocationType {
   region: string;
   imageUrl: string;
   popular: boolean;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
 }
