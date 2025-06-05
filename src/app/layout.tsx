@@ -1,18 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter, Montserrat } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  variable: '--font-montserrat',
-  display: 'swap',
-});
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'GoaWheels - Premium Transport Services in Goa',
@@ -25,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${montserrat.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-white font-sans antialiased">
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.className} min-h-screen bg-gray-50`}>
         {children}
       </body>
     </html>
