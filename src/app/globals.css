@@ -21,7 +21,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
-    @apply font-semibold text-[#004d40]; /* Deep teal */
+    @apply font-semibold text-[#004d40];
   }
 }
 
@@ -62,15 +62,6 @@
     @apply transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg;
   }
 
-  .animate-float {
-    animation: float 2s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-
   .mobile-menu-enter {
     opacity: 0;
     transform: translateY(-10px);
@@ -92,31 +83,19 @@
     transform: translateY(-10px);
     transition: opacity 150ms ease-in, transform 150ms ease-in;
   }
-
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
-  }
-
-  .animate-marquee-reverse {
-    animation: marquee-reverse 30s linear infinite;
-  }
-
-  @keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
-  }
-
-  @keyframes marquee-reverse {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0%); }
-  }
-
-  .mask-fade {
-    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-  }
 }
 
+/* Animations */
+.animate-float {
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Parallax effect */
 .parallax-bg {
   background-attachment: fixed;
   background-position: center;
