@@ -16,7 +16,7 @@
 
   body {
     font-family: 'Open Sans', sans-serif;
-    @apply text-gray-900 bg-gray-50;
+    @apply text-gray-900 bg-[#f9fdfb];
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -27,23 +27,35 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-lg shadow-md transition duration-200;
   }
 
   .btn-primary {
-    @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500;
+    @apply bg-secondary-500 text-white hover:bg-secondary-600;
   }
 
   .btn-secondary {
-    @apply bg-secondary-500 text-gray-900 hover:bg-secondary-600 focus:ring-secondary-500;
+    @apply bg-white text-primary-700 border border-primary-600 hover:bg-primary-50;
   }
 
   .btn-outline {
-    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-50 focus:ring-primary-500;
+    @apply border border-primary-600 text-primary-700 bg-white hover:bg-primary-100;
+  }
+
+  .btn-filter {
+    @apply px-4 py-1.5 text-sm font-medium rounded-full border transition duration-200;
+  }
+
+  .btn-filter-active {
+    @apply bg-primary-700 text-white shadow-md;
+  }
+
+  .btn-filter-inactive {
+    @apply border-primary-700 text-primary-700 hover:bg-primary-50;
   }
 
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   .section {
@@ -55,11 +67,11 @@
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-card overflow-hidden transition-all duration-300;
+    @apply bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-lg;
   }
 
   .card-hover {
-    @apply transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-card-hover;
+    @apply transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl;
   }
 
   .mobile-menu-enter {

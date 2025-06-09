@@ -4,23 +4,12 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { motion } from 'framer-motion';
 import { MapPin, Navigation, Phone, Mail } from 'lucide-react';
 import { locations } from '../data/locations';
+import { LocationType } from '../types';
+
 
 const LocationsSection: React.FC = () => {
   const [activeLocation, setActiveLocation] = useState(locations[0]);
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
 
-  const mapContainerStyle = {
-    width: '100%',
-    height: '400px',
-  };
-
-  const center = {
-    lat: 15.4989,
-    lng: 73.8278,
-  };
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -43,67 +32,55 @@ const LocationsSection: React.FC = () => {
     }
   };
 
+  const mapContainerClass = "w-full h-[400px] rounded-xl shadow-card border-0";
+const getIframeSrc = (loc: typeof locations[0]) => {
+    if (loc.iframeSrc) return loc.iframeSrc;
+    return `https://maps.google.com/maps?q=${loc.coordinates.lat},${loc.coordinates.lng}&z=15&output=embed`;
+  };
   return (
-    <section id="locations" ref={ref} className="section bg-gradient-to-b from-gray-50 to-white">
+    <section id="locations" className="section bg-gradient-to-b from-gray-50 to-white">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <motion.h2 
+         <motion.h2
             className="section-title"
             initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             Our Service Locations
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-gray-600 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Explore our extensive coverage across Goa. Whether you're heading to popular beaches or hidden gems, 
+            Explore our extensive coverage across Goa. Whether you're heading to popular beaches or hidden gems,
             we've got your transport needs covered.
           </motion.p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <motion.div 
-            className="rounded-xl overflow-hidden shadow-card"
+                <motion.div
+            className="overflow-hidden rounded-xl shadow-card"
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate="visible"
           >
-            <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''}>
-              <GoogleMap
-                mapContainerStyle={mapContainerStyle}
-                center={center}
-                zoom={11}
-                options={{
-                  styles: [
-                    {
-                      featureType: "all",
-                      elementType: "geometry",
-                      stylers: [{ color: "#242f3e" }]
-                    }
-                  ]
-                }}
-              >
-                {locations.map((location) => (
-                  <Marker
-                    key={location.id}
-                    position={{ lat: 15.4989, lng: 73.8278 }}
-                    onClick={() => setActiveLocation(location)}
-                  />
-                ))}
-              </GoogleMap>
-            </LoadScript>
+            <iframe
+              src={getIframeSrc(activeLocation)}
+              className={mapContainerClass}
+              loading="lazy"
+              allowFullScreen
+              title={`Map of ${activeLocation.name}`}
+            />
           </motion.div>
 
-          <motion.div 
+                <motion.div
             className="space-y-6"
             variants={containerVariants}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            animate="visible"
           >
             {locations.map((location) => (
               <motion.div
@@ -141,9 +118,9 @@ const LocationsSection: React.FC = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate="visible"
         >
-          <motion.div variants={itemVariants} className="card p-6">
+          <motion.div variants={itemVariants} className="card p-6 shadow-md">
             <Navigation className="h-8 w-8 text-primary-500 mb-4" />
             <h3 className="font-heading text-lg font-semibold mb-2">Coverage Area</h3>
             <p className="text-gray-600">
@@ -151,7 +128,7 @@ const LocationsSection: React.FC = () => {
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="card p-6">
+          <motion.div variants={itemVariants} className="card p-6 shadow-md">
             <Phone className="h-8 w-8 text-primary-500 mb-4" />
             <h3 className="font-heading text-lg font-semibold mb-2">24/7 Support</h3>
             <p className="text-gray-600">
@@ -159,7 +136,7 @@ const LocationsSection: React.FC = () => {
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="card p-6">
+          <motion.div variants={itemVariants} className="card p-6 shadow-md">
             <Mail className="h-8 w-8 text-primary-500 mb-4" />
             <h3 className="font-heading text-lg font-semibold mb-2">Easy Booking</h3>
             <p className="text-gray-600">
@@ -171,7 +148,7 @@ const LocationsSection: React.FC = () => {
         <motion.div 
           className="mt-12 text-center"
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <a 
