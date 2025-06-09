@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import gsap from 'gsap';
-import { Calendar, Clock, MapPin, Car, X } from 'lucide-react';
+import { Calendar, Clock, MapPin, Car, X, Phone, Mail } from 'lucide-react';
 
 type BookingType = 'pickup' | 'rental';
 type VehicleCategory = 'Car' | 'Bike' | 'Scooter' | 'Premium';
@@ -39,15 +39,15 @@ const BookingSection: React.FC = () => {
   };
 
   return (
-    <section id="book-now" ref={ref} className="py-20">
-      <div className="contcontainer-customainer mx-auto px-4">
+    <section id="book-now" ref={ref} className="py-20 bg-gray-50">
+      <div className="container-custom mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 booking-element">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Book Your Goa Adventure
+              Complete Your Booking
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Quick and easy booking for your transport needs in Goa. Select your service type, provide details, and we'll take care of the rest.
+              Fill in the details below for a comprehensive booking experience. Our team will contact you to confirm your reservation.
             </p>
           </div>
 
@@ -227,6 +227,17 @@ const BookingSection: React.FC = () => {
 
                   <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="your@email.com"
+                      className="bg-gray-50 border border-gray-200 rounded-md py-3 px-4 w-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    />
+                  </div>
+
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Special Requests (Optional)
                     </label>
                     <textarea
@@ -240,7 +251,7 @@ const BookingSection: React.FC = () => {
                     type="submit"
                     className="w-full bg-accent-400 hover:bg-accent-500 text-white font-medium py-3 rounded-md transition-all hover:shadow-lg"
                   >
-                    Book Now
+                    Submit Booking Request
                   </button>
                 </form>
               </div>
@@ -286,12 +297,16 @@ const BookingSection: React.FC = () => {
                   <h4 className="text-sm font-medium text-secondary-300 mb-3">
                     Need Assistance?
                   </h4>
-                  <a href="tel:+918001234567" className="block text-white hover:text-secondary-300 transition-colors mb-2">
-                    +91 800 123 4567
-                  </a>
-                  <a href="mailto:bookings@goawheels.com" className="block text-white hover:text-secondary-300 transition-colors">
-                    bookings@goawheels.com
-                  </a>
+                  <div className="space-y-2">
+                    <a href="tel:+918001234567" className="flex items-center text-white hover:text-secondary-300 transition-colors">
+                      <Phone className="h-4 w-4 mr-2" />
+                      +91 800 123 4567
+                    </a>
+                    <a href="mailto:bookings@goawheels.com" className="flex items-center text-white hover:text-secondary-300 transition-colors">
+                      <Mail className="h-4 w-4 mr-2" />
+                      bookings@goawheels.com
+                    </a>
+                  </div>
                 </div>
 
                 <div className="bg-primary-800 rounded-lg p-4 text-center">
