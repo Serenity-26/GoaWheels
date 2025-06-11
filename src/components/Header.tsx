@@ -147,12 +147,12 @@ const Header: React.FC = () => {
                     <div className="text-xs text-gray-500">Explore at your own pace</div>
                   </Link>
                   <Link
-                    href="/rentals/airport"
+                    href="/rentals/bike"
                     onClick={() => setIsRentalsOpen(false)}
                     className="block px-5 py-3 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors rounded-lg mx-2"
                   >
-                    <div className="font-medium">Airport Transfer</div>
-                    <div className="text-xs text-gray-500">Hassle-free pickup & drop</div>
+                    <div className="font-medium">Bike Rental</div>
+                    <div className="text-xs text-gray-500">Freedom on two wheels</div>
                   </Link>
                 </div>
               </div>
@@ -228,11 +228,11 @@ const Header: React.FC = () => {
                     Self Drive Cars
                   </Link>
                   <Link
-                    href="/rentals/airport"
+                    href="/rentals/bike"
                     className="block text-sm text-gray-600 hover:text-primary-600 transition-colors py-1"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Airport Transfer
+                    Bike Rental
                   </Link>
                 </div>
               </div>
