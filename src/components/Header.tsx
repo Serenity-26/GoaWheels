@@ -158,14 +158,14 @@ const Header: React.FC = () => {
               </div>
 
               <Link
-                href="/faq"
+                href="/pickup-drop"
                 className={`font-medium text-sm transition-all duration-300 hover:scale-105 ${
                   isScrolled 
                     ? 'text-gray-700 hover:text-primary-600' 
                     : 'text-white hover:text-secondary-300'
                 }`}
               >
-                FAQ
+                Pickup & Drop
               </Link>
 
               {/* CTA Button */}
@@ -237,11 +237,11 @@ const Header: React.FC = () => {
                 </div>
               </div>
               <Link
-                href="/faq"
+                href="/pickup-drop"
                 className="block font-medium text-gray-700 hover:text-primary-600 transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                FAQ
+                Pickup & Drop
               </Link>
               <Link
                 href="#book-now"
